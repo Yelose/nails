@@ -1,0 +1,52 @@
+.radio-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 0.75rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+
+  .material-symbols-outlined.icon {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    font-size: 1.8rem;
+    transition: color 0.3s ease;
+    color: #ddae37;
+  }
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    padding-right: 40px;
+    .label {
+      font-family: "Marcellus SC", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    .notes {
+      font-family: "Montserrat", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 0.8rem;
+      color: #777;
+    }
+  }
+  .price {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  &.selected {
+    background-color: #f7f0db;
+    box-shadow: 0 0 0 2px #9e7610;
+    .material-symbols-outlined.icon {
+      color: #9e7610;
+      font-variation-settings: "FILL" 1;
+    }
+  }
+}

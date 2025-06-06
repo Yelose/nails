@@ -1,0 +1,112 @@
+<main>
+  <div>
+    <!-- PREPARACIÓN -->
+    @if (groupedItems()['preparation'].length) {
+    <section>
+      <h3>Preparación</h3>
+      @for (item of groupedItems()['preparation']; track item.name) {
+      <app-custom-checkbox
+        [label]="item.name"
+        [price]="item.price"
+        [notes]="item.notes"
+        [selected]="isSelected(item.name, 'preparation')"
+        (toggle)="toggleSelection(item.name, 'preparation')"
+      />
+      }
+    </section>
+    }
+
+    <!-- BASE -->
+    @if (groupedItems()['base'].length) {
+    <section>
+      <h3>Base</h3>
+      @for (item of groupedItems()['base']; track item.name) {
+      <app-custom-radio
+        [label]="item.name"
+        [price]="item.price"
+        [notes]="item.notes"
+        [selected]="isSelected(item.name, 'base')"
+        (select)="toggleSelection(item.name, 'base')"
+        group="base"
+      />
+      }
+    </section>
+    }
+
+    <!-- TERMINACIÓN -->
+    @if (groupedItems()['finish'].length) {
+    <section>
+      <h3>Terminación</h3>
+      @for (item of groupedItems()['finish']; track item.name) {
+      <app-custom-radio
+        [label]="item.name"
+        [price]="item.price"
+        [notes]="item.notes"
+        [selected]="isSelected(item.name, 'finish')"
+        (select)="toggleSelection(item.name, 'finish')"
+        group="finish"
+      />
+      }
+    </section>
+    }
+  </div>
+  <div>
+    <!-- EXTRAS -->
+    @if (groupedItems()['extra'].length) {
+    <section>
+      <h3>Extras</h3>
+      @for (item of groupedItems()['extra']; track item.name) {
+      <app-custom-checkbox
+        [label]="item.name"
+        [price]="item.price"
+        [notes]="item.notes"
+        [selected]="isSelected(item.name, 'extra')"
+        (toggle)="toggleSelection(item.name, 'extra')"
+      />
+      }
+    </section>
+    }
+
+    <!-- RETIRADA -->
+    @if (groupedItems()['removal'].length) {
+    <section>
+      <h3>Retirada</h3>
+      @for (item of groupedItems()['removal']; track item.name) {
+      <app-custom-checkbox
+        [label]="item.name"
+        [price]="item.price"
+        [notes]="item.notes"
+        [selected]="isSelected(item.name, 'removal')"
+        (toggle)="toggleSelection(item.name, 'removal')"
+      />
+      }
+    </section>
+    } @if (totalPrice() > 0) {
+    <section>
+      <h3>Artículos seleccionados</h3>
+      <article>
+        <h2>Total: {{ totalPrice() }} €</h2>
+        <ul>
+          @if (selectedBase()) {
+          <li>{{ selectedBase()?.name }} – {{ selectedBase()?.price }} €</li>
+          } @if (selectedFinish()) {
+          <li>
+            {{ selectedFinish()?.name }} – {{ selectedFinish()?.price }} €
+          </li>
+          } @for (item of selectedPreparation(); track item.name) {
+          <li>{{ item.name }} – {{ item.price }} €</li>
+          } @for (item of selectedExtras(); track item.name) {
+          <li>{{ item.name }} – {{ item.price }} €</li>
+          } @for (item of selectedRemoval(); track item.name) {
+          <li>{{ item.name }} – {{ item.price }} €</li>
+          }
+        </ul>
+      </article>
+    </section>
+    }
+  </div>
+  <menu class="mobile-menu">
+    <span (click)="openWhatsapp()" class="material-symbols-outlined">chat_bubble</span>
+    <span>{{ totalPrice() }}€</span>
+  </menu>
+</main>

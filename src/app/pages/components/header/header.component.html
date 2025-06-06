@@ -1,0 +1,40 @@
+<header>
+  <section>
+    <figure>
+      <app-logo></app-logo>
+    </figure>
+    <h1>Uñas permanentes y manicura</h1>
+  </section>
+
+  <menu aria-controls="menu">
+    <li role="menuitem">
+      <a routerLink="">Inicio</a>
+    </li>
+    <li role="menuitem">
+      <a routerLink="precios">Precios</a>
+    </li>
+    <li role="menuitem">
+      <a
+        href="https://wa.me/34656614888"
+        target="_blank"
+        aria-details="Pedir cita por whatsapp"
+      >
+        Pedir cita: 656 614 888
+      </a>
+    </li>
+  </menu>
+
+<!-- Botón de menú responsive -->
+@if (currentUrl() === '/' || currentUrl() === '/precios') {
+  <div class="menu-button">
+    <div
+      [routerLink]="currentUrl() === '/' ? '/precios' : '/'"
+      [attr.aria-label]="currentUrl() === '/' ? 'Ir a precios' : 'Volver al inicio'"
+    >
+      <span class="material-symbols-outlined">
+        {{ currentUrl() === '/' ? 'store' : 'home' }}
+      </span>
+    </div>
+  </div>
+}
+</header>

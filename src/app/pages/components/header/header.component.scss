@@ -1,0 +1,95 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 55px;
+  width: 100%;
+  padding: 5px;
+  background: radial-gradient(
+    130% 90% at -10% 22%,
+    #fed74d 0%,
+    #eebe43 30%,
+    #ddae37 50%,
+    #ca991e 70%,
+    #9e7610 100%
+  );
+  menu,
+  section {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    gap: 15px;
+  }
+  section {
+    figure {
+      height: 100%;
+    }
+    h1 {
+      font-family: "Mea Culpa", cursive;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 35px;
+    }
+  }
+  menu {
+    font-family: "Marcellus SC", serif;
+    font-weight: 400;
+    font-style: normal;
+    li {
+      list-style-type: none;
+      a {
+        color: rgba(0, 0, 0, 0.85);
+        text-decoration: none;
+        transition: all 0.6s;
+      }
+      a:hover {
+        color: black;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.5); // efecto suave
+      }
+    }
+  }
+}
+.menu-button {
+  display: none;
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    .material-symbols-outlined {
+      font-size: 40px;
+      color: #463304;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  header {
+    menu {
+      display: none;
+    }
+
+  }
+
+  .menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+@media (max-width: 500px) {
+  header {
+    section {
+      figure {
+        width: 40px;
+        height: 40px;
+      }
+      h1{
+        font-size: 25px;
+      }
+    }
+  }
+}
